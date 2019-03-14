@@ -39,6 +39,14 @@ const UserView = ({fetchedUser, userInput}) => (
           {fetchedUser.public_repos || 'No public repositories'}
         </td>
       </tr>
+      <tr>
+        <td>
+          User Homepage:
+        </td>
+        <td>
+          {<a href={fetchedUser.html_url} target='_blank' rel="noopener noreferrer" alt='user homepage'>GitHub</a> || 'No public repositories'}
+        </td>
+      </tr>
       </tbody>
     </table>
     </div>

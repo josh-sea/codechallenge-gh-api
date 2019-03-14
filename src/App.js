@@ -4,9 +4,8 @@ import UserView from './components/UserView'
 
 class App extends Component {
   state = {
-    users: [],
     fetchedUser: {},
-    userInput: 'flatiron',
+    userInput: '',
     fetch: false,
   }
 
@@ -24,15 +23,13 @@ class App extends Component {
       headers:
           {
         'Accept': 'application/vnd.github.v3+json',
-         Authorization: 'token c567f217d512c7bad9327486d472304f9302b793'
+         Authorization: 'token e5f543e6e51b463d41a0a4a996be298678a3c8d2'
             }
         })
         .then(r=>r.json())
         .then(r=>{
-          this.setState(prevState=>{
-            return {fetchedUser: r, users: [...prevState.users, r]}
-          }, ()=>{
-            // console.log(this.state.fetchedUser, this.state.users);
+          this.setState({fetchedUser: r}, ()=>{
+            // console.log(this.state.fetchedUser);
             this.setState({fetched: true})
             })
           })
@@ -48,7 +45,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <form onSubmit ={this.handleSubmit}>
+        <form onSubmit ={this.handleSubmit} style={{marginTop:'10%'}}>
+        <h3>Search!</h3>
           <input type='text' value={this.state.userInput} onChange={this.handleText} placeholder='Search'/>
           <input type='submit' value='submit'/>
         </form>
