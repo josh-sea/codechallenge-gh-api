@@ -1,9 +1,9 @@
 import React from 'react';
 
-const UserView = ({fetchedUser}) => (
+const UserView = ({fetchedUser, userInput}) => (
   <div>
     <h5>User Image</h5>
-    <img src={fetchedUser.avatar_url} style={{height: '300px', width: '300px'}}/>
+    <img src={fetchedUser.avatar_url} style={{height: '300px', width: '300px'}} alt='user'/>
     <div  style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
     <table>
     <tbody>
@@ -12,7 +12,7 @@ const UserView = ({fetchedUser}) => (
           Name:
         </td>
         <td>
-          {fetchedUser.name}
+          {fetchedUser.name || 'No listed name'}
         </td>
       </tr>
       <tr>
@@ -20,7 +20,7 @@ const UserView = ({fetchedUser}) => (
           Email:
         </td>
         <td>
-          {fetchedUser.email}
+          {fetchedUser.email || 'No listed email'}
         </td>
       </tr>
       <tr>
@@ -28,7 +28,7 @@ const UserView = ({fetchedUser}) => (
           Company:
         </td>
         <td>
-          {fetchedUser.company}
+          {fetchedUser.company || 'No listed company'}
         </td>
       </tr>
       <tr>
@@ -36,7 +36,7 @@ const UserView = ({fetchedUser}) => (
           Public Repo Count:
         </td>
         <td>
-          {fetchedUser.public_repos}
+          {fetchedUser.public_repos || 'No public repositories'}
         </td>
       </tr>
       </tbody>

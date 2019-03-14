@@ -6,7 +6,7 @@ class App extends Component {
   state = {
     users: [],
     fetchedUser: {},
-    userInput: 'josh-sea',
+    userInput: 'flatiron',
     fetch: false,
   }
 
@@ -24,7 +24,7 @@ class App extends Component {
       headers:
           {
         'Accept': 'application/vnd.github.v3+json',
-         Authorization: 'token a71d50e49a6f232b026a72881c94b86a9abe6c51'
+         Authorization: 'token c567f217d512c7bad9327486d472304f9302b793'
             }
         })
         .then(r=>r.json())
@@ -32,7 +32,7 @@ class App extends Component {
           this.setState(prevState=>{
             return {fetchedUser: r, users: [...prevState.users, r]}
           }, ()=>{
-            console.log(this.state.fetchedUser, this.state.users);
+            // console.log(this.state.fetchedUser, this.state.users);
             this.setState({fetched: true})
             })
           })
@@ -52,7 +52,7 @@ class App extends Component {
           <input type='text' value={this.state.userInput} onChange={this.handleText} placeholder='Search'/>
           <input type='submit' value='submit'/>
         </form>
-        {this.state.fetched && <UserView fetchedUser={this.state.fetchedUser} />}
+        {this.state.fetched && <UserView fetchedUser={this.state.fetchedUser} userInput={this.state.userInput}/>}
       </div>
     );
   }
